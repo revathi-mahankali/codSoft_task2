@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creative Landing Page — Beginner Project</title>
+    <meta
+      name="description"
+      content="A clean, responsive landing page example using HTML & CSS — great beginner project."
+    />
+    <style>
+      :root {
+        --bg: #f6f8fb;
+        --card: #ffffff;
+        --accent: #6c63ff;
+        --accent-2: #00b894;
+        --muted: #6b7280;
+        --glass: rgba(108, 99, 255, 0.08);
+        --radius: 12px;
+        --max-width: 1100px;
+        --container-padding: 24px;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial;
+        color: #0f1724;
+        line-height: 1.5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: var(--bg);
+      }
+
+      .wrap {
+        max-width: var(--max-width);
+        margin: 28px auto;
+        padding: var(--container-padding);
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--accent), #9b8cff);
+        color: white;
+        font-weight: 700;
+      }
+
+      nav {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        padding: 8px 10px;
+        border-radius: 8px;
+      }
+      nav a:hover {
+        background: var(--glass);
+        color: var(--accent);
+      }
+
+      .btn {
+        background: var(--accent);
+        color: white;
+        padding: 10px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 600;
+      }
+
+      .hero {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.6),
+          rgba(255, 255, 255, 0.3)
+        );
+        padding: 28px;
+        border-radius: var(--radius);
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 28px;
+        align-items: center;
+        box-shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
+      }
+
+      .hero h1 {
+        font-size: clamp(26px, 4vw, 40px);
+        margin: 0 0 12px;
+      }
+      .hero p {
+        margin: 0 0 18px;
+        color: var(--muted);
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .feature {
+        background: linear-gradient(180deg, #fff, #fbfdff);
+        padding: 12px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(16, 24, 40, 0.04);
+        text-align: center;
+      }
+      .feature h4 {
+        margin: 8px 0 4px;
+        font-size: 15px;
+      }
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 18px;
+        box-shadow: 0 8px 30px rgba(16, 24, 40, 0.06);
+      }
+
+      .mock {
+        background: linear-gradient(180deg, #0f1724 0%, #111827 100%);
+        color: white;
+        padding: 18px;
+        border-radius: 10px;
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 8px;
+      }
+      .mock-screen {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 12px;
+        border-radius: 8px;
+        min-height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 20px;
+      }
+      .mock-keys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .key {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+      }
+      .key.wide {
+        grid-column: span 2;
+      }
+
+      section {
+        margin-top: 28px;
+      }
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        align-items: start;
+      }
+      .about p {
+        color: var(--muted);
+      }
+
+      footer {
+        margin-top: 30px;
+        padding: 18px;
+        border-radius: 10px;
+        background: linear-gradient(180deg, #fff, #fbfdff);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr 320px;
+        }
+        .features {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 680px) {
+        header {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        nav {
+          order: 2;
+          justify-content: space-between;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .mock {
+          min-height: auto;
+        }
+        .features {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+      .center {
+        text-align: center;
+      }
+
+      .spaced {
+        padding: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a class="brand" href="#">
+          <div class="logo">CS</div>
+          <div>
+            <div style="font-weight: 700">Revathi — Frontend</div>
+            <div style="font-size: 12px; color: var(--muted)">
+              CodeSoft Internship
+            </div>
+          </div>
+        </a>
+
+        <nav>
+          <a href="#features">Features</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a class="btn" href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div>
+            <h1>Build clean, responsive landing pages — beginner friendly</h1>
+            <p>
+              Create columns, divide sections, arrange items, and add headers
+              and footers while learning HTML & CSS. Focus on alignment,
+              padding, and color choices to avoid overlapping elements.
+            </p>
+
+            <div class="features" id="features">
+              <div class="feature">
+                <strong>Layout</strong>
+                <p>Create flexible columns and stacked sections.</p>
+              </div>
+              <div class="feature">
+                <strong>Design</strong>
+                <p>Use a consistent color palette and spacing system.</p>
+              </div>
+              <div class="feature">
+                <strong>Accessibility</strong>
+                <p>Semantic markup and good contrast.</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 18px">
+              <a class="btn" href="#projects">See demo</a>
+              <a
+                style="
+                  margin-left: 12px;
+                  text-decoration: none;
+                  color: var(--muted);
+                "
+                href="#about"
+                >Read guide</a
+              >
+            </div>
+          </div>
+
+          <aside class="card">
+            <div class="mock">
+              <div class="mock-screen" id="display">0</div>
+              <div class="mock-keys" id="keys">
+                <div class="key">7</div>
+                <div class="key">8</div>
+                <div class="key">9</div>
+                <div class="key">/</div>
+
+                <div class="key">4</div>
+                <div class="key">5</div>
+                <div class="key">6</div>
+                <div class="key">*</div>
+
+                <div class="key">1</div>
+                <div class="key">2</div>
+                <div class="key">3</div>
+                <div class="key">-</div>
+
+                <div class="key">0</div>
+                <div class="key">.</div>
+                <div class="key wide">=</div>
+                <div class="key">+</div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="about" class="spaced">
+          <h2>Why this project?</h2>
+          <div class="two-col">
+            <div class="about card">
+              <p>
+                This landing page project is ideal for beginners — it uses only
+                HTML and CSS with a small JavaScript enhancement for
+                interactivity. You'll practice:
+              </p>
+              <ul>
+                <li>Creating responsive grid layouts</li>
+                <li>Using consistent spacing and typography</li>
+                <li>
+                  Designing simple UI components like cards, buttons, and forms
+                </li>
+                <li>
+                  Preventing overlap using padding, gap, and media queries
+                </li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3 class="center">Starter Checklist</h3>
+              <ol>
+                <li>
+                  Plan your sections: header, hero, features, projects, footer
+                </li>
+                <li>Pick a color palette and limit to 2–3 primary colors</li>
+                <li>Use CSS variables for consistent spacing</li>
+                <li>Test in small screens and reduce column count</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="spaced">
+          <h2>Project Examples</h2>
+          <div class="two-col">
+            <div class="card">
+              <h4>Calculator (Frontend)</h4>
+              <p class="muted">
+                A clean calculator built with HTML, CSS and JS — perfect to show
+                logic + UI skills.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Portfolio Website</h4>
+              <p class="muted">
+                Showcase projects, contact info, and a short about section. Keep
+                it simple and fast.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="spaced">
+          <h2>Contact</h2>
+          <div class="card">
+            <p class="muted">
+              Want the full code or guidance? Send a message — I’ll be happy to
+              help you adapt this template.
+            </p>
+            <form
+              onsubmit="event.preventDefault();alert('Thanks — message simulated.');"
+              style="display: flex; gap: 8px; flex-wrap: wrap"
+            >
+              <input
+                type="text"
+                placeholder="Your name"
+                required
+                style="
+                  flex: 1;
+                  padding: 10px;
+                  border-radius: 8px;
+                  border: 1px solid #e6e9ef;
+                "
+              />
+              <input
+                type="email"
+                placeholder="Your email"
+                required
+                style="
+                  flex: 1;
+                  padding: 10px;
+                  border-radius: 8px;
+                  border: 1px solid #e6e9ef;
+                "
+              />
+              <textarea
+                placeholder="Message"
+                rows="3"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 8px;
+                  border: 1px solid #e6e9ef;
+                "
+              ></textarea>
+              <button class="btn" type="submit">Send</button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="muted">© 2025 Revathi • Built for CodeSoft Internship</div>
+        <div style="display: flex; gap: 12px">
+          <a href="#" class="muted">Privacy</a>
+          <a href="#" class="muted">Terms</a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Simple calculator logic for the mockup (keeps UI interactive)
+      (function () {
+        const display = document.getElementById("display");
+        let expr = "";
+        document.getElementById("keys").addEventListener("click", (e) => {
+          if (!e.target.classList.contains("key")) return;
+          const val = e.target.textContent.trim();
+          if (val === "=") {
+            try {
+              // evaluate safely: allow digits, operators, dot
+              if (/^[0-9+\-*/. ()]+$/.test(expr)) {
+                const res = Function(`return (${expr})`)();
+                expr = String(res);
+              } else {
+                expr = "Error";
+              }
+            } catch (err) {
+              expr = "Error";
+            }
+          } else if (val === "C" || val === "AC") {
+            expr = "";
+          } else {
+            expr += val;
+          }
+          display.textContent = expr || "0";
+        });
+      })();
+    </script>
+  </body>
+</html>
